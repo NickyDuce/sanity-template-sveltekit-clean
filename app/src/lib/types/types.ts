@@ -40,7 +40,7 @@ export type Project = {
   
 
   //studio types
-export type studioContent ={
+export type Studio ={
   slug: {
     _type: 'slug';
     current: string;
@@ -87,6 +87,6 @@ export type studioContent ={
         role: string;
         linkedIn: string;
       };
-    }[];
+    };
   };
 }

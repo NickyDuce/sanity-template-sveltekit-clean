@@ -1,5 +1,5 @@
 import { client } from '$lib/sanity/client';
-import type { studioContent } from '$lib/types/types';
+import type { Studio } from '$lib/types/types';
 
 export async function load() {
   try {
@@ -49,7 +49,7 @@ export async function load() {
       }
     }`;
 
-    const studioContent: studioContent = await client.fetch(query);
+    const studioContent: Studio = await client.fetch(query);
 
     console.log('Fetched Studio Content:', studioContent); // Debugging
 

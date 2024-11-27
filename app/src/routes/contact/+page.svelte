@@ -1,7 +1,9 @@
 <script lang="ts">
   
     // Declare the prop to receive data
-    export let mockData;
+   // export let mockData;
+    export let data: { mockData: any };
+    const mockData = data.mockData;
   
     // Debug to check if the prop is received
     console.log('Received studioContent from contact:', mockData);
@@ -14,4 +16,3 @@
   {:else}
     <p>No content available frmmc.</p>
   {/if}
-x  
