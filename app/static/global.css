@@ -1,3 +1,4 @@
+
 :root {
 	--space-0: 0;
 	--space-1: 4px;
@@ -40,8 +41,8 @@
 	--line-height-11: 96px;
 	--line-height-12: 128px;
 
-	--white: #fff;
-	--black: #101112;
+	--white: #FAFAFA;
+	--black: #2B2A2A;
 	--gray-200: #ced2d9;
 	--gray-600: #6e7683;
 	--blue-600: #1e61cd;

@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.navigation_container {
+    justify-content: space-between;
+    border: 1px solid red;
+    z-index: 10;
+    padding: 2rem 1rem;
+    width: 100vw;
+
+
+.logo_container{
+    display: flex;
+    border: 2px solid black;
+
+    div{
+        border: 1px solid red;
+        font-size: 8rem;
+        font-weight: 700;
+    }
+}
+
+  .navigation{
+    display:flex;
+    justify-content: space-between;
+    border: 1px solid blueviolet;
+    height: fit-content;
+ 
+  }
+
+}

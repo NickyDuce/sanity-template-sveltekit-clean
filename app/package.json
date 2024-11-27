@@ -10,18 +10,21 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"dependencies": {
-		"@sanity/client": "^6.15.4",
+		"@sanity/client": "^6.21.1",
 		"@sanity/image-url": "^1.0.2",
-		"@sanity/svelte-loader": "^1.11.1",
+		"@sanity/svelte-loader": "^1.11.35",
 		"@sanity/visual-editing": "^2.0.0",
-		"groq": "^3.33.0"
+		"groq": "^3.33.0",
+		"install": "^0.13.0",
+		"npm": "^10.9.1"
 	},
 	"devDependencies": {
 		"@portabletext/svelte": "^2.1.11",
 		"@portabletext/types": "^2.0.13",
+		"@sanity/codegen": "^3.64.3",
 		"@sanity/types": "^3.52.4",
 		"@sveltejs/adapter-auto": "^3.2.2",
-		"@sveltejs/kit": "^2.5.20",
+		"@sveltejs/kit": "^2.8.5",
 		"@sveltejs/vite-plugin-svelte": "^3.1.1",
 		"@typescript-eslint/eslint-plugin": "^6.21.0",
 		"@typescript-eslint/parser": "^6.21.0",
@@ -33,6 +36,7 @@
 		"prettier": "^3.3.3",
 		"prettier-plugin-svelte": "^3.2.6",
 		"svelte": "^4.2.18",
+		"tailwindcss": "^3.4.15",
 		"tslib": "^2.6.3",
 		"typescript": "^5.5.3",
 		"vite": "^5.3.5"
