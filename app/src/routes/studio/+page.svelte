@@ -18,10 +18,12 @@
 
   <div class="studio-page">
     <!-- Studio Image -->
+     {#if studioContent.studioImage}
       <img
         src={getImageUrl(studioContent.studioImage.asset)}
         class="studio-image"
       />
+    {/if}
 
     <!-- Welcome Section -->
       <div class="welcome">
@@ -49,26 +51,28 @@
       </section>
     {/if}
 
-    <!-- Section 06 -->
+<!-- Section 06 -->
+{#if studioContent.faces}
+  <section>
     {#if studioContent.faces}
-      <section>
-        {#if studioContent.faces.footage}
-          <!-- svelte-ignore a11y-media-has-caption -->
-          <video controls>
-            <source src={studioContent.faces.footage.asset.url} type="video/mp4" />
-          </video>
-        {/if}
-        <p>{studioContent.faces.theTeam}</p>
-        <div class="partner-list grid grid-cols-3 gap-4">
-          {#each Array.isArray(studioContent.faces.partnerList) ? studioContent.faces.partnerList : [] as partner}
-            <div class="partner">
-              <img src={getImageUrl(partner.partner.image.asset)} alt={partner.partner.name} />
-              <h4>{partner.partner.name}</h4>
-              <p>{partner.partner.role}</p>
-              <a href={partner.partner.linkedIn} target="_blank">LinkedIn</a>
-            </div>
-          {/each}
-        </div>
-      </section>
+      <!-- svelte-ignore a11y-media-has-caption -->
+      <video controls>
+        <source src={studioContent.faces.footage.asset.url} type="video/mp4" />
+      </video>
     {/if}
-  </div>
+    <p>{studioContent.faces.theTeam}</p>
+    <div class="partner-list grid grid-cols-3 gap-4">
+      {#each Array.isArray(studioContent.faces.partnerList) ? studioContent.faces.partnerList : [] as partner}
+        {#if partner.partner}
+          <div class="partner">
+            <img src={getImageUrl(partner.partner.image.asset)} alt={partner.partner.name} />
+            <h4>{partner.partner.name}</h4>
+            <p>{partner.partner.role}</p>
+            <a href={partner.partner.linkedIn} target="_blank">LinkedIn</a>
+          </div>
+        {/if}
+      {/each}
+    </div>
+  </section>
+{/if}
+</div>
