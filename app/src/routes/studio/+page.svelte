@@ -62,7 +62,7 @@
         <div class="partner-list grid grid-cols-3 gap-4">
           {#each Array.isArray(studioContent.faces.partnerList) ? studioContent.faces.partnerList : [] as partner}
             <div class="partner">
-              <img src={partner.partner.image.asset.url} alt={partner.partner.name} />
+              <img src={getImageUrl(partner.partner.image.asset)} alt={partner.partner.name} />
               <h4>{partner.partner.name}</h4>
               <p>{partner.partner.role}</p>
               <a href={partner.partner.linkedIn} target="_blank">LinkedIn</a>
