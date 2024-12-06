@@ -51,7 +51,7 @@ export async function load() {
 
     const studioContent: Studio = await client.fetch(query);
 
-    console.log('Fetched Studio Content:', studioContent); // Debugging
+   // console.log('Fetched Studio Content:', studioContent); // Debugging
 
     // Return studioContent directly
     return { studioContent };

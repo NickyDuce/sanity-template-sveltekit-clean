@@ -1,0 +1,28 @@
+.gallery-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    background-color: #f7f7f7;
+    border: 1px solid red;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cards li {
+    width: 500px;
+    height: 100px;
+    background: #fff;
+    margin: 0 10px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

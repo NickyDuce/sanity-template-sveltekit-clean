@@ -8,7 +8,7 @@
  const studioContent = data.studioContent;
 
   // Debugging the received prop
-  console.log('Received Studio Content in Svelte:', studioContent.welcome);
+  //console.log('Received Studio Content in Svelte:', studioContent.welcome);
 
   // Fallback for missing image
   function getImageUrl(image: any) {

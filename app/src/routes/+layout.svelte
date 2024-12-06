@@ -34,13 +34,13 @@
 		</ul>
 				<!-- Logo  -->
 				<div class="logo_container flex items-center justify-center">
-					<div class="f">
+					<div class="logo_letter f">
 						<img src="./F.svg" alt="F-logo">
 					</div>
-					<div class="dash">
+					<div class="logo_letter dash">
 						<img src="./dash.svg" alt="F-logo">
 					</div>
-					<div class="e">
+					<div class="logo_letter e">
 						<img src="./E.svg" alt="F-logo">
 
 					</div>

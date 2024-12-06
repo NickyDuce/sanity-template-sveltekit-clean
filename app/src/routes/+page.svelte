@@ -4,7 +4,6 @@
 	import Card from '../components/Card.svelte';
 	import Welcome from '../components/Welcome.svelte';
 	import type { PageData } from './$types';
-
 	export let data: PageData;
 
 	// Initialize the query with the data from the server
@@ -13,6 +12,7 @@
 	// Reactively update the posts variable whenever the query resolves
 	$: ({ data: projects } = $q);
 </script>
+
 
 <section class="container mx-auto p-8">
 	{#if projects?.length}
@@ -24,4 +24,8 @@
 	{:else}
 		<Welcome />
 	{/if}
+
+<!-- Using a CDN for GSAP -->
+
 </section>
+

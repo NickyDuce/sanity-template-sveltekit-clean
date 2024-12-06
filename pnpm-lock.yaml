@@ -29,9 +29,15 @@ importers:
       '@sanity/visual-editing':
         specifier: ^2.0.0
         version: 2.1.8(@sanity/client@6.21.1)(@sveltejs/kit@2.8.5(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.5(@types/node@18.19.39)))(svelte@4.2.18)(vite@5.3.5(@types/node@18.19.39)))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(svelte@4.2.18)
+      '@types/gsap':
+        specifier: ^3.0.0
+        version: 3.0.0
       groq:
         specifier: ^3.33.0
         version: 3.52.4
+      gsap:
+        specifier: ^3.12.5
+        version: 3.12.5
       install:
         specifier: ^0.13.0
         version: 0.13.0
@@ -1693,6 +1699,10 @@ packages:
   '@types/glob@7.2.0':
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
 
+  '@types/gsap@3.0.0':
+    resolution: {integrity: sha512-BbWLi4WRHGze4C8NV7U7yRevuBFiPkPZZyGa0rryanvh/9HPUFXTNBXsGQxJZJq7Ix7j4RXMYodP3s+OsqCErg==}
+    deprecated: This is a stub types definition. gsap provides its own type definitions, so you do not need this installed.
+
   '@types/hast@2.3.10':
     resolution: {integrity: sha512-McWspRw8xx8J9HurkVBfYj0xKoE25tOFlHGdx4MJ5xORQrMGZNqJhVQWaIbm6Oyla5kYOXtDiopzKRJzEOkwJw==}
 
@@ -2951,6 +2961,9 @@ packages:
   groq@3.64.3:
     resolution: {integrity: sha512-z9Qa8fHAOC3tdNJrlPAqWF0L1dVvss0r4E0lvijLPHrEmR03VuzIcc3f4Fk1/Plwabj5GwZmGwHecc9te7KJ5A==}
     engines: {node: '>=18'}
+
+  gsap@3.12.5:
+    resolution: {integrity: sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==}
 
   gunzip-maybe@1.4.2:
     resolution: {integrity: sha512-4haO1M4mLO91PW57BMsDFf75UmwoRX0GkdD+Faw+Lr+r/OZrOCS0pIBwOL1xCKQqnQzbNFGgK2V2CpBUPeFNTw==}
@@ -7020,6 +7033,10 @@ snapshots:
       '@types/minimatch': 5.1.2
       '@types/node': 18.19.39
 
+  '@types/gsap@3.0.0':
+    dependencies:
+      gsap: 3.12.5
+
   '@types/hast@2.3.10':
     dependencies:
       '@types/unist': 2.0.10
@@ -8591,6 +8608,8 @@ snapshots:
   groq@3.52.4: {}
 
   groq@3.64.3: {}
+
+  gsap@3.12.5: {}
 
   gunzip-maybe@1.4.2:
     dependencies:

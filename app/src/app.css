@@ -2,32 +2,201 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .navigation_container {
     justify-content: space-between;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     z-index: 10;
-    padding: 2rem 1rem;
+    padding: 1rem 2rem;
     width: 100vw;
+}
 
-
-.logo_container{
+.logo_container {
     display: flex;
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    width: 100%;
+    justify-content: end;
+}
 
-    div{
-        border: 1px solid red;
-        font-size: 8rem;
-        font-weight: 700;
+.logo_letter {
+    /* border: 1px solid red; */
+    font-weight: 700;
+    height: 4rem;
+    width: 4rem;
+}
+
+.logo_letter img {
+    width: 100%;
+    height: 100%;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid blueviolet; */
+    height: fit-content;
+}
+
+.navigation a {
+    color: #000;
+    font-family: "Neue Haas Grotesk Display Pro";
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 450;
+    line-height: normal;
+    letter-spacing: 0.24px;
+    text-transform: uppercase;
+    padding: 0 1rem;
+}
+
+.viewParent {
+    display: grid;
+    height: 85vh;
+    width: 100vw;
+    /* border: 3px solid rgb(128, 53, 0); */
+    grid-template-columns: 80% 20%;
+}
+
+.viewContent {
+    display: grid;
+    /* border: 3px solid rgb(0, 111, 128); */
+    align-content: space-between;
+    align-items: end;
+    height: 100%;
+    width: 100%;
+}
+
+.viewContent_container {
+    display: grid;
+    position: relative;
+    width: 100%;
+    /* border: 3px solid pink; */
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+}
+
+.viewContent_child {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 0.2rem;
+    flex-shrink: 0;
+}
+
+.viewContent_child h5 {
+    color: #000;
+    font-family: "Neue Haas Grotesk Display Pro";
+    font-size: 0.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.viewContent_child p {
+    color: #000;
+    font-family: "Neue Haas Grotesk Display Pro";
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 450;
+    line-height: normal;
+    letter-spacing: 0.24px;
+}
+
+.sliderParent {
+    /* display: grid; */
+    grid-auto-flow: column;
+    align-items: start;
+    /* border: 2px solid green; */
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    padding: 1rem;
+}
+
+.selected-slide {
+    display: grid;
+    align-items: center;
+    /* border: 3px solid blue; */
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.selected-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider-wrapper {
+    display: grid;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    /* border: 3px solid pink; */
+    overflow: auto;
+
+}
+
+.slideContainer {
+    display: grid;
+    /* border: 3px solid red; */
+    width: 10rem;
+    height: 8rem;
+    overflow: hidden;
+    transition: opacity .4s;
+}
+[data-slider="slide"]{ opacity: 0.2; }
+[data-slider="slide"].active { opacity: 1; } 
+[data-slider="slide"].active .slide-caption{ transition-delay:0.3s;} 
+
+.slide-inner {
+  border-radius: .5em;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+
+@media (max-width: 769px) {
+    .viewParent {
+        grid-template-columns: 1fr;
+    }
+
+    .viewContent.mx-auto.grid.grid-col.lg\:grid-row.md\:grid-row.gap-1 {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: start;
+    }
+
+    .slider-wrapper.mx-auto.grid.grid-row.lg\:grid-col.md\:grid-col.gap-2 {
+        height: 20vh;
+        display: grid;
+        padding: 1rem;
+        grid-auto-flow: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .slider-wrapper.mx-auto.grid.grid-row.lg\:grid-col.md\:grid-col.gap-2 .slideContainer {
+        display: flex;
+        /* border: 3px solid red; */
+        width: 5rem;
+        height: 5rem;
+        overflow: hidden;
     }
 }
 
-  .navigation{
-    display:flex;
-    justify-content: space-between;
-    border: 1px solid blueviolet;
-    height: fit-content;
- 
-  }
-
+@media (min-width: 770px) {
+    .slider-wrapper.mx-auto.grid.grid-row.lg\:grid-col.md\:grid-col.gap-2 {
+        height: 70%;
+    }
 }
+
+

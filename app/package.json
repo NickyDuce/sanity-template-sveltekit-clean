@@ -1,9 +1,9 @@
 {
-	"name": "app",
-	"version": "0.0.1",
+	"name": "forma-elementa",
+	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
@@ -14,9 +14,12 @@
 		"@sanity/image-url": "^1.0.2",
 		"@sanity/svelte-loader": "^1.11.35",
 		"@sanity/visual-editing": "^2.0.0",
+		"@types/gsap": "^3.0.0",
 		"groq": "^3.33.0",
+		"gsap": "^3.9.1",
 		"install": "^0.13.0",
-		"npm": "^10.9.1"
+		"npm": "^10.9.1",
+		"svelte": "^3.38.3"
 	},
 	"devDependencies": {
 		"@portabletext/svelte": "^2.1.11",
