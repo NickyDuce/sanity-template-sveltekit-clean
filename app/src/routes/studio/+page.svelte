@@ -14,6 +14,9 @@
   function getImageUrl(image: any) {
     return image ? urlFor(image).url() : '';
   }
+
+  // CHecking for partner
+  console.log("Partner list: ",studioContent);
 </script>
 
   <div class="studio-page">
@@ -55,6 +58,7 @@
 {#if studioContent.faces}
   <section>
     {#if studioContent.faces}
+    <h1>Studio Faces:</h1>
       <!-- svelte-ignore a11y-media-has-caption -->
       <video controls>
         <source src={studioContent.faces.footage.asset.url} type="video/mp4" />
@@ -63,14 +67,14 @@
     <p>{studioContent.faces.theTeam}</p>
     <div class="partner-list grid grid-cols-3 gap-4">
       {#each Array.isArray(studioContent.faces.partnerList) ? studioContent.faces.partnerList : [] as partner}
-        {#if partner.partner}
-          <div class="partner">
-            <img src={getImageUrl(partner.partner.image.asset)} alt={partner.partner.name} />
-            <h4>{partner.partner.name}</h4>
-            <p>{partner.partner.role}</p>
-            <a href={partner.partner.linkedIn} target="_blank">LinkedIn</a>
-          </div>
-        {/if}
+        <div class="partner">
+          <img src={getImageUrl(partner.image.asset)} alt={partner.name} />
+          <h4>{partner.name}</h4>
+          <p>{partner.role}</p>
+          {#if partner.linkedIn}
+            <a href={partner.linkedIn} target="_blank">LinkedIn</a>
+          {/if}
+        </div>
       {/each}
     </div>
   </section>

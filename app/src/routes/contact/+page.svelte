@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { gsap } from 'gsap';
-	import { ScrollTrigger, Draggable } from 'gsap/all';
 	import type { PageData } from './$types';
+	
 
   
 	export let data: PageData; // Cards data from +page.server.ts
@@ -14,6 +12,7 @@
 
   <div class="sliderParent  mx-auto flex flex-col lg:flex-row md:flex-row gap-2 flex-col-reverse">
 		<!-- Slider Wrapper -->
+		 <div class="scrollContainer"> </div>
 		<div class="slider-wrapper  mx-auto grid grid-row lg:grid-col md:grid-col gap-2" data-slider="list" >
 			{#each data.cards as card (card.slug.current)}
 			  <div class="slideContainer" data-slider="slide">

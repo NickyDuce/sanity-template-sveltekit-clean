@@ -1,3 +1,4 @@
+@import './scale.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -39,7 +40,7 @@
 .navigation a {
     color: #000;
     font-family: "Neue Haas Grotesk Display Pro";
-    font-size: 0.8rem;
+    font-size: .8rem;
     font-style: normal;
     font-weight: 450;
     line-height: normal;
@@ -105,6 +106,12 @@
     letter-spacing: 0.24px;
 }
 
+.scrollContainer{/* Enable scrolling */
+  /* border: 2px solid green; */
+
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
 .sliderParent {
     /* display: grid; */
     grid-auto-flow: column;
@@ -138,9 +145,12 @@
     padding: 1rem;
     justify-content: center;
     align-items: center;
-    /* border: 3px solid pink; */
-    overflow: auto;
-
+    border: 3px solid pink;
+    overflow-y: scroll;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+.slider-wrapper::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for webkit browsers */
 }
 
 .slideContainer {
@@ -149,20 +159,13 @@
     width: 10rem;
     height: 8rem;
     overflow: hidden;
-    transition: opacity .4s;
-}
-[data-slider="slide"]{ opacity: 0.2; }
-[data-slider="slide"].active { opacity: 1; } 
-[data-slider="slide"].active .slide-caption{ transition-delay:0.3s;} 
 
-.slide-inner {
-  border-radius: .5em;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
 }
-
+.slideContainer.active {
+  opacity: 1; /* Highlight active slide */
+  transform: scale(1.1); /* Slightly enlarge the active slide */
+  z-index: 1; /* Bring the active slide to the front */
+}
 
 @media (max-width: 769px) {
     .viewParent {
@@ -175,7 +178,9 @@
     }
 
     .slider-wrapper.mx-auto.grid.grid-row.lg\:grid-col.md\:grid-col.gap-2 {
-        height: 20vh;
+        overflow-y: auto;
+        max-height: 80vh; /* Adjust as needed */
+        scroll-behavior: smooth;
         display: grid;
         padding: 1rem;
         grid-auto-flow: column;
@@ -195,7 +200,10 @@
 
 @media (min-width: 770px) {
     .slider-wrapper.mx-auto.grid.grid-row.lg\:grid-col.md\:grid-col.gap-2 {
-        height: 70%;
+       
+        overflow-y: auto;
+        max-height: 40vh; /* Adjust as needed */
+        scroll-behavior: smooth;
     }
 }
 

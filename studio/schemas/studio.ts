@@ -5,7 +5,7 @@ export default defineType({
   name: 'studio',
   title: 'Studio',
   type: 'document',
-  fields: [
+  fields: [ 
     //slug
     defineField({ 
       name: 'slug',

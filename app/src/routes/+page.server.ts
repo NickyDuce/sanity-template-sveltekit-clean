@@ -1,16 +1,28 @@
-import { projectsQuery as query} from '$lib/sanity/projectQueries'; // Import your query and Project type
-import type { Project } from '$lib/types/types'; // Import your Project type
 import type { PageServerLoad } from './$types';
+import {client} from '$lib/sanity/client';
 
-export const load: PageServerLoad = async (event) => {
-	const { loadQuery } = event.locals;
 
-	// Fetch the list of projects using the query
-	const initial = await loadQuery<Project[]>(query);
 
-	// Return the query and initial data for use by the page
-	return {
-		query,
-		options: { initial }
-	};
+
+export const load: PageServerLoad = async () => {
+  // Fetch data for the cards from Sanity
+  const query = `*[_type == "project"] | order(completionDate desc) {
+    _id,
+    slug,
+    projectTitle,
+    heroImage {
+      asset -> {
+      url
+      }
+    },
+    completionDate,
+    sector,
+    client,
+    location
+    }`;
+
+  const cards = await client.fetch(query);
+  
+
+  return { cards };
 };

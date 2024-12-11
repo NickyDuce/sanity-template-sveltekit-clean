@@ -33,17 +33,8 @@
 			</li>
 		</ul>
 				<!-- Logo  -->
-				<div class="logo_container flex items-center justify-center">
-					<div class="logo_letter f">
-						<img src="./F.svg" alt="F-logo">
-					</div>
-					<div class="logo_letter dash">
-						<img src="./dash.svg" alt="F-logo">
-					</div>
-					<div class="logo_letter e">
-						<img src="./E.svg" alt="F-logo">
-
-					</div>
+				<div class="logo_container">
+					<h6>FORMA ELEMENTA</h6>
 				 </div>
 
 	</header>

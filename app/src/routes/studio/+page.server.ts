@@ -25,28 +25,26 @@ export async function load() {
         part1,
         part2
       },
-      faces{
-        footage{
-          asset->{
-            _id,
-            url
-          }
-        },
-        theTeam,
-        partnerList[]{
-          partner{
-            name,
-            image{
-              asset->{
-                _id,
-                url
-              }
-            },
-            role,
-            linkedIn
-          }
-        }
+  faces{
+    footage{
+      asset->{
+        _id,
+        url
       }
+    },
+    theTeam,
+    partnerList[]{
+      name,
+      image{
+        asset->{
+          _id,
+          url
+        }
+      },
+      role,
+      linkedIn
+    }
+  }
     }`;
 
     const studioContent: Studio = await client.fetch(query);
