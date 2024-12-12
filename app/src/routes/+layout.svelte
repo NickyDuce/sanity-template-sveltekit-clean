@@ -17,7 +17,11 @@
 
 	<header class="navigation_container mx-auto flex flex-col lg:flex-row md:flex-row gap-4">
 
-
+	<!-- Logo  -->
+	<div class="logo_container">
+		<a href="/">FORMA ELEMENTA</a>
+	</div>
+				 
 <!-- The navigation content on the left side -->
 		<ul class="navigation flex lg:w-1/2 md:w-1/2">	
 			<li class="navigation__item">
@@ -32,19 +36,11 @@
 				<a href="/contact">CONTACT</a>
 			</li>
 		</ul>
-				<!-- Logo  -->
-				<div class="logo_container">
-					<h6>FORMA ELEMENTA</h6>
-				 </div>
 
 	</header>
 	<main>
-
 		<slot />
 	</main>
-	<footer class="footer">
-
-	</footer>
 </div>
 
 {#if $isPreviewing}
