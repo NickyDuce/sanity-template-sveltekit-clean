@@ -1,16 +1,35 @@
-import { projectsQuery as query} from '$lib/sanity/projectQueries'; // Import your query and Project type
-import type { Project } from '$lib/types/types'; // Import your Project type
-import type { PageServerLoad } from './$types';
+import type { Project } from '$lib/types/types';
+import { client } from '$lib/sanity/client';
 
-export const load: PageServerLoad = async (event) => {
-	const { loadQuery } = event.locals;
+export async function load() {
+  const query = `
+    *[_type == "project"]{
+      slug,
+      projectTitle,
+      heroImage {
+        asset -> {
+          _id,
+          url
+        }
+      },
+      completionDate,
+      services,
+      imageGrid
+    }
+  `;
 
-	// Fetch the list of projects using the query
-	const initial = await loadQuery<Project[]>(query);
+  try {
+    const projects: Project[] = await client.fetch(query);
 
-	// Return the query and initial data for use by the page
-	return {
-		query,
-		options: { initial }
-	};
-};
+    // Handle empty results
+    if (!projects || projects.length === 0) {
+      console.warn('No projects found');
+      return { projects: [] }; // Return an empty array to prevent UI errors
+    }
+
+    return { projects };
+  } catch (error) {
+    console.error('Error fetching projects:', error.message, error.stack);
+    throw new Error('Failed to load projects');
+  }
+}

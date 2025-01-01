@@ -1,0 +1,189 @@
+/* typeography clamps */
+:root {
+  --font-size-body: clamp(0.8rem, 1vw, 1rem);
+  --font-size-sm: clamp(0.5rem, .7vw, .7rem);
+  --font-size-subheadings: clamp(0.7rem, 0.8vw, 0.8rem);
+  --font-size-pxl: clamp(0.8rem, 1.8vw, 1.4rem);
+  --font-size-headings: clamp(1.8rem, 3vw, 2rem);
+  --font-size-title: clamp(1.5rem, 3vw, 2rem);
+  --font-size-links: clamp(0.7rem, 0.8vw, 0.8rem);
+}
+
+/* PPWriter.css */
+
+
+/* Neue Haas Display */
+@font-face {
+  font-family: 'NeueHaasDisplay';
+  src: url('./fonts/NeueHaasDisplay/NeueHaasDisplayLight.ttf') format('truetype');
+  font-weight: 300; /* Light */
+}
+
+@font-face {
+  font-family: 'NeueHaasDisplay';
+  src: url('./fonts/NeueHaasDisplay/NeueHaasDisplayRoman.ttf') format('truetype');
+  font-weight: 400; /* Regular */
+}
+
+@font-face {
+  font-family: 'NeueHaasDisplay';
+  src: url('./fonts/NeueHaasDisplay/NeueHaasDisplayMedium.ttf') format('truetype');
+  font-weight: 500; /* Medium */
+}
+
+@font-face {
+  font-family: 'NeueHaasDisplay';
+  src: url('./fonts/NeueHaasDisplay/NeueHaasDisplayBold.ttf') format('truetype');
+  font-weight: 700; /* Bold */
+}
+
+@font-face {
+  font-family: 'NeueHaasDisplay';
+  src: url('./fonts/NeueHaasDisplay/NeueHaasDisplayBlack.ttf') format('truetype');
+  font-weight: 900; /* Black */
+}
+
+/* PP Right Serif Mono */
+@font-face {
+  font-family: 'PPRightSerifMono';
+  src: url('./fonts/PPWriteSerifMono/PPRightSerifMono-Fine.otf') format('opentype');
+  font-weight: 300; /* Fine */
+}
+
+
+@font-face {
+  font-family: 'PPRightSerifMono';
+  src: url('./fonts/PPWriteSerifMono/PPRightSerifMono-Regular.otf') format('opentype');
+  font-weight: 400; /* Regular */
+}
+
+@font-face {
+  font-family: 'PPRightSerifMono';
+  src: url('./fonts/PPWriteSerifMono/PPRightSerifMono-Dark.otf') format('opentype');
+  font-weight: 700; /* Dark */
+}
+
+/* Define font variables */
+:root {
+  --font-family-body: 'NeueHaasDisplay', sans-serif;
+  --font-family-accent: 'PPRightSerifMono', monospace;
+
+  /* Font sizes */
+  --font-size-paragraph: clamp(0.9rem, 1vw, 1rem);
+  --font-size-subheadings: clamp(0.7rem, 0.8vw, 0.8rem);
+  --font-size-headings: clamp(2.5rem, 4vw, 3rem);
+  --font-size-headings: clamp(2.5rem, 4vw, 3rem);
+  --font-size-accent-paragraph: clamp(0.8rem, 0.9vw, 0.9rem);
+  --font-size-links: clamp(0.7rem, 0.8vw, 0.8rem);
+
+  /* Font weights */
+  --font-weight-paragraph: 500; /* NeueHaasDisplayMedium */
+  --font-weight-subheadings: 700; /* NeueHaasDisplayBold */
+  --font-weight-headings: 700; /* NeueHaasDisplayBold */
+  --font-weight-accent-paragraph: 400; /* PPRightSerifMono-Regular */
+  --font-weight-subheading-accent: 700; /* PPRightSerifMono-Dark */
+  --font-weight-links: 400; /* PPRightSerifMono-Regular */
+  --font-weight-link-accent: 400; /* PPRightSerifMono-Regular */
+}
+
+/* Utility classes for global typography */
+
+/* Paragraphs */
+body, p {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-paragraph);
+  font-weight: var(--font-weight-paragraph);
+}
+
+/* Sub-headings */
+.subheadings {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-subheadings);
+  font-weight: var(--font-weight-subheadings);
+  text-transform: capitalize;
+}
+
+/* Small txt */
+.p-sm {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-subheadings);
+  font-weight: var(--font-weight-paragraph);
+}
+
+/* Headings */
+.header-title{
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-subheadings);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-headings);
+  font-weight: var(--font-weight-headings);
+}
+
+/* Big Body*/
+.pxl{
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-pxl);
+  font-weight: var(--font-weight-headings);
+}
+
+/* Accent Paragraphs */
+.p-accent {
+  font-family: var(--font-family-accent);
+  font-size: var(--font-size-accent-paragraph);
+  font-weight: var(--font-weight-accent-paragraph);
+  color: #999D9E;
+}
+
+.p-md-accent {
+  font-family: var(--font-family-accent);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-accent-paragraph);
+  color: #000000;
+}
+
+.size-4xl{
+  font-family: var(--font-family-body);
+  font-weight: var(--font-weight-subheadings);
+  text-transform: uppercase;
+  font-size: var(--font-size-headings);
+  width: fit-content;
+}
+
+/* small p accent */
+.p-sm-accent {
+  font-family: var(--font-family-accent);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-accent-paragraph);
+}
+
+/* Sub-heading Accent */
+.subheading-accent {
+  font-family: var(--font-family-accent);
+  font-size: var(--font-size-subheadings);
+  font-weight: var(--font-weight-subheading-accent);
+}
+
+/* Links */
+a {
+  font-family: var(--font-family-accent);
+  font-size: var(--font-size-links);
+  font-weight: var(--font-weight-links);
+  text-decoration: none;
+  width: fit-content;
+  color: inherit;
+}
+
+/* Link Accent */
+a.link-accent {
+  font-family: var(--font-family-accent);
+  font-size: var(--font-size-links);
+  font-weight: var(--font-weight-link-accent);
+  text-decoration: underline;
+  width: fit-content;
+  color: inherit;
+}

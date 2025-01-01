@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'PPWriter';
+    src: url('../static/fonts/PPWriter/PPWriter-Bold.otf') format('opentype');
+    font-weight: bold;
+  }
+  
+  @font-face {
+    font-family: 'PPWriter';
+    src: url('../static/fonts/PPWriter/PPWriter-Regular.otf') format('opentype');
+    font-weight: normal;
+  }
+  
+  @font-face {
+    font-family: 'PPWriter';
+    src: url('../static/fonts/PPWriter/PPWriter-Book.otf') format('opentype');
+    font-weight: 300;
+  }
+  
+  @font-face {
+    font-family: 'PPWriter';
+    src: url('../static/fonts/PPWriter/PPWriter-Thin.otf') format('opentype');
+    font-weight: 100;
+  }
+  
+  body {
+    font-family: 'PPWriter', sans-serif;
+  }
+  

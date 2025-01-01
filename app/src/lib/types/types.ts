@@ -40,53 +40,46 @@ export type Project = {
   
 
   //studio types
-export type Studio ={
-  slug: {
-    _type: 'slug';
-    current: string;
-  };
-  studioImage: {
-    asset: {
-      _ref: string;
-      url: string;
+  export type Studio = {
+    slug: string;
+    studioImage: { asset: { _id: string; url: string } };
+    welcome: string;
+    section01: {
+      title: string;
+      part1: string;
+      part2: string;
     };
-    hotspot?: boolean;
-  };
-  welcome: string;
-  section01: {
-    title: string;
-    part1: string;
-    part2: string;
-  };
-  section02: {
-    title: string;
-    description: string;
-    subHeading1: string;
-    subHeading2: string;
-    part1: string;
-    part2: string;
-  };
-  faces: {
-    footage: {
-      asset: {
-        _ref: string;
-        url: string;
-      };
+    gallery: { asset: { _id: string; url: string } }[]; // Add gallery field
+    section02: {
+      title: string;
+      description: string;
+      subHeading1: string;
+      subHeading2: string;
+      part1: string;
+      part2: string;
     };
-    theTeam: string;
-    partnerList: {
-      partner: {
+    faces: {
+      footage: { asset: { _id: string; url: string } };
+      theTeam: string;
+      partnerList: {
         name: string;
-        image: {
-          asset: {
-            _ref: string;
-            url: string;
-          };
-          hotspot?: boolean;
-        };
+        image: { asset: { _id: string; url: string } };
         role: string;
         linkedIn: string;
-      };
+      }[];
     };
   };
-}
+
+// Homepage types
+export type HomeBodyContent = {
+  subHeading: string;
+  body1: string;
+  body2: string;
+};
+
+export type HomeContent = {
+  version: string;
+  slug: string;
+  header: string;
+  body: HomeBodyContent;
+};

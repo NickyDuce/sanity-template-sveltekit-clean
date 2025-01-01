@@ -33,6 +33,10 @@
 			</li>
 
 			<li class="navigation__item">
+				<a href="/products">Store</a>
+			</li>
+
+			<li class="navigation__item">
 				<a href="/contact">CONTACT</a>
 			</li>
 		</ul>

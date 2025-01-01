@@ -1,14 +1,30 @@
-@import './scale.css';
+@import './typography.css';
+@import './studio.css';
+@import './fonts.css';
+@import './products.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
+  
+
 .navigation_container {
+    position:fixed;
     justify-content: space-between;
     /* border: 1px solid red; */
     z-index: 10;
     padding: 0.5rem 1rem;
     width: 100vw;
+}
+
+/* From https://css.glass */
+.navigation_container{
+background: rgba(255, 255, 255, 0.34);
+/* box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); */
+backdrop-filter: blur(7.2px);
+-webkit-backdrop-filter: blur(7.2px);
+/* border: 1px solid rgba(255, 255, 255, 0.3); */
 }
 
 .logo_container {
@@ -42,264 +58,390 @@
     padding: 0 1rem;
 }
 
-.viewParent {
-    display: grid;
-    margin-top: 20vh;
-    align-self: end;
-    height: 80vh;
+.homePage{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    /* border: 3px solid red; */
     width: 100vw;
-    grid-template-columns: 50% 30% 20%; 
-    /* border: 2px solid purple; */
-    padding: 1rem
-    /* gap: 1rem; */
+    height: 130vh;
+    padding: 0 1rem;
 
-}
-
-/* Big Box */
-.bigBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* border: 2px solid red; */
-    height: 90%;
-    width: 90%;
-    overflow: hidden;
-    padding: 1rem;
-     background-color: #131313;
-     align-self: start;
-    /* > Image element */
-    img {
-        width: 100%;
-        height: 95%;
-        object-fit: cover;
+    .header{
+    margin-top: 10vh;
+    .header-title{
+    margin-bottom: 3vh;
+    }
     }
 
-}
-
-
-.cardTitle{
-    display: grid;
-    grid-auto-flow: column;
-    justify-content: center;
-    height: fit-content;
-    /* border: 1px solid black; */
-    width: 100%;
-    overflow: hidden;
-    gap: 1rem;
-
-
-    .stb-item{
-        /* border: 1px solid red; */
+    .Maincontent{
         display: flex;
-        width: 100%;
-        margin-right: 10rem;
-        justify-content: center;
-        text-align: center;
-        align-content: center;
-        padding: 0rem;
-        color: white;
-        font-family: "Neue Haas Grotesk Display Pro";
-        font-size: 0.8rem;
-        font-weight: 450;
-        text-decoration: none;
-        p{
-            /* border: 3px solid yellow; */
-            width: 100%;
+        flex-direction: column;
+        /* grid-template-rows: 1fr 1fr; */
+        /* border: 3px solid orange; */
+        height: 100%;
+        margin-top: 1rem;
+
+        /* (logo) | (content) */
+        .contentContainer{
+            /* border: 2px solid black; */
+            justify-content: end;
+            height: 100%;
+
+            .logo{
+                /* border: 2px solid red; */
+                height: fit-content;
+                width: fit-content;
+                display: flex;
+                justify-content: start;
+                align-items: end;
+                svg{
+                    height: 20%;
+                    width: auto;
+                }
+            }
+
+            .contentParent{
+                display: flex;
+                flex-direction: column;
+                /* border: 2px solid red; */
+                height: 100%;
+                gap: 3rem;
+                h3{text-decoration: underline;}
+            }
         }
-        
-    }
+
+        /* The products */
+        /* (subheading) | (products container) */
+        .showcaseContainer{
+            /* border: 5px solid black; */
+            /* display: grid;
+            grid-template-columns: 1fr 1fr; */
+            justify-content: end;
+            width: 100%;
+            height: fit-content;
+
+        }
     }
 
-/* Small Box */
-.smallBox {
+
+}
+
+.projectSection{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 45%;
-    width: 90%;
-    overflow: hidden;
-    background-color: #131313;
-    padding: 1rem;
-    align-self: start;
-    /* Image element */
-    img {
+    width: 100vw;
+    height: 150vh;
+    padding: 0 1rem;
+
+    .header{
+        display: grid;
+        justify-content: space-between;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-    
-}
+        height: fit-content;
+        margin: 10rem 0;
+        padding: 3rem 0;
+        border-bottom: 1px solid black;
 
+        .col-toggle{
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
 
-/* Content Section */
-.viewContent {
-    display: grid;
-    align-content: space-between;
-    align-self: start;
-    justify-self: flex-start;
-    height: fit-content;
-    width: 100%;
-    /* border: 2px solid blue; */
-}
-
-.viewContent_container {
-    display: grid;
-    grid-auto-flow: column;
-    height: auto;
-    width: 100%;
-    /* border: 2px solid green; */
-
-}
-
-.viewContent_child {
-    display: grid;
-    padding: 1rem 0.2rem;
-    flex-direction: column;
-    align-items: flex-start;
-    /* border: 2px solid pink; */
-
-}
-
-.viewContent_child h5 {
-    color: #000;
-    font-family: "Neue Haas Grotesk Display Pro";
-    font-size: 0.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.viewContent_child p {
-    color: #000;
-    font-family: "Neue Haas Grotesk Display Pro";
-    font-size: 0.8rem;
-    font-weight: 450;
-    line-height: normal;
-    width: fit-content;
-}
-
-/* Button */
-.btmTag {
-    width: fit-content;
-    height: auto;
-    padding: 0.4rem 1.5rem;
-    border-radius: 25px;
-    border: 1px solid #000;
-    color: #000;
-    font-family: "Neue Haas Grotesk Display Pro";
-    font-size: 12px;
-    font-weight: 500;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-
-@media (max-width: 800px) {
-    .viewParent {
-        grid-template-columns: 1fr;
-        grid-template-rows: 2fr 1fr .3fr;
-        gap: 1rem;
-        height: 80vh;
-    }
-
-    .smallBox{
-        /* grid-template-columns: repeat(2, 1fr); */
-        justify-content: center;
-        align-items: center;
-        /* border: 3px solid orange; */
-        width: 50%;
-        height: 70%;
-        padding: .6rem;
-
-    }
-    .bigBox{
-        padding: .6rem;
-        height: 100%;
-        width: 90%;
-        img{
-            height: 90%;
-        }
-        
-    }
-
-    .slider-wrapper.mx-auto.grid.grid-row.lg\:grid-col.md\:grid-col.gap-2 .slideContainer {
-        display: flex;
-        /* border: 3px solid red; */
-        width: 5rem;
-        height: 5rem;
-        overflow: hidden;
-    }
-}
-
-@media (min-width: 300px) and (max-width: 800px) {
-
-    .viewParent.mx-auto.grid.grid-row.lg\:grid-col.md\:grid-col{
-        margin-top: 5vh;
-        height: 100vh;
-
-    }
-    .smallBox{
-        /* grid-template-columns: repeat(2, 1fr); */
-        justify-content: center;
-        align-items: center;
-        /* border: 3px solid orange; */
-        width: 60%;
-        height: 100%;
-        padding: .6rem;
-
-        img{
-            width: 100%;
-            height: 90%;
-        }
-
-    }
-    .bigBox{
-        padding: .6rem;
-        height: 100%;
-        width: 90%;
-        img{
-            height: 90%;
-            width: 100%;
-        }
-        
-    }
-    }
-
-    @media (max-width: 299px){
-        .viewParent.mx-auto.grid.grid-row.lg\:grid-col.md\:grid-col{
-            margin-top: 5vh;
-            height: 100vh;
-        }
-
-        .bigBox{
-            padding: .6rem;
-            height: 95%;
-            width: 100%;
-            img{
-                height: 90%;
-                width: 100%;
+            .viewbtn{
+                border: 1px solid black;
+                width: 150px;
+                height: fit-content;
+                padding: 0.5rem 0rem;
+                border-radius: 50px; 
+                
+                &:hover{
+                    background-color: #2B2A2A;
+                    color: white;
+                }
             }
             
         }
-        .smallBox{
-            /* grid-template-columns: repeat(2, 1fr); */
-            justify-content: center;
-            align-items: center;
-            /* border: 3px solid orange; */
-            width: 80%;
-            height: 65%;
-            padding: .6rem;
-    
-            img{
-                width: 100%;
-                height: 90%;
-            }
-    
+
+
+    }
+
+    /* The grid view */
+    .container{
+        max-width: 100%;
+        margin: 0 auto;
+        /* border: 2px solid orange; */
+
+
+        .col{
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
     }
+    
+    .grid-view{
+        display: grid;
+
+        .row-thumbnail{
+         height: 100%;
+         width: auto;
+        }
+
+        .projectDetails{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            width: 100%;
+        }
+    }
+
+    .project-list{
+        display: grid;
+        grid-auto-flow: row;
+        height: 100%;
+        gap: 1rem;
+
+        .project{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            overflow: hidden;
+            /* border: 2px solid red; */
+            height: 20vh;
+
+            .title{
+                height: fit-content;
+            }
+
+            &:hover{
+                /* background-color: red; */
+                .preview{
+                    display: grid;
+                }
+                .project-number{
+                    display: none;
+                }
+            }
+        }
+
+
+        .project-number{
+            display: block;
+        }
+
+        .title{
+            display: flex;
+            gap: 3rem;
+        }
+
+
+        .preview{
+            display: none;
+            grid-template-columns: repeat(3, 1fr);
+            height: 30vh;
+            width: 30vw;
+            gap: 5px;
+        }
+
+    }
+}
+
+/* Desktop */
+@media (min-width: 960px) {
+
+    .grid-view{
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .header{
+        grid-template-columns: 1fr 1fr 1fr;
+
+    }
+    .homePage{
+        /* border: 1px solid red; */
+    
+    .Maincontent{
+        display: flex;
+        flex-direction: column;
+    
+        .showcaseContainer{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+
+            .showcase-grid{
+                /* border: 2px solid green; */
+                display: flex;
+                gap: 1rem;
+                height: fit-content;
+                .showcase-item{
+                    /* border: 3px solid red;  */
+                    height: 100%; 
+                    width: auto;
+                }
+                .showcase-image{ 
+                    /* border: 3px solid red; */
+                    /* display: grid; */
+                    height: 100%;
+                    width: auto;
+                }
+        }
+        }
+    
+        .contentContainer{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                padding-top: 3rem;
+                align-items: end;
+
+        }
+    }
+    }
+}
+
+
+
+/* Ipad */
+@media (min-width: 500px) and (max-width: 960px) {
+
+    .header{
+        grid-template-columns: 1fr 1fr 1fr;
+
+    }
+
+    .grid-view{
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .homePage{
+        /* border: 1px solid red; */
+    
+    .Maincontent{
+        display: flex;
+        flex-direction: column;
+    
+        .showcaseContainer{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            .showcase-grid{
+                /* border: 2px solid green; */
+                display: flex;
+                gap: 1rem;
+                height: fit-content;
+                .showcase-item{
+                    /* border: 3px solid red;  */
+                    height: 100%; 
+                    width: auto;
+                }
+                .showcase-image{ 
+                    /* border: 3px solid red; */
+                    /* display: grid; */
+                    height: 100%;
+                    width: auto;
+                }
+        }
+        }
+    
+        .contentContainer{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                padding-top: 3rem;
+                
+        }
+    }
+    }
+
+}
+
+/* Mobile */
+@media (max-width: 500px){
+
+    .header{
+        grid-auto-flow: row;
+        justify-content: center;
+        gap: 1rem;
+        height: 50vh;
+        .col-title{
+            --column-width: 6;
+        }
+
+
+    }
+
+    .grid-view{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .homePage{
+        /* border: 1px solid green; */
+        height: 140vh;
+    
+    .Maincontent{
+        display: flex;
+        flex-direction: row;
+    
+        .showcaseContainer{
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            /* grid-template-columns: 1fr; */
+            height: 100%;
+            .subHead{
+                /* justify-content: end; */
+                h2{
+                    padding: .5rem;
+                    width: 100%;
+                    height: fit-content;
+                }
+            }
+
+            .showcase-grid{
+                /* border: 2px solid green; */
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                gap: 1rem;
+                height: fit-content;
+
+                .showcase-item{
+                    /* border: 3px solid red;  */
+                    height: fit-content; 
+                    width: auto;
+                }
+                .showcase-image{ 
+                    /* border: 3px solid red; */
+                    /* display: grid; */
+                    height: 100%;
+                    width: auto;
+                }
+        }
+        }
+    
+        .contentContainer{
+                display: flex;
+                flex-direction: column-reverse;
+                margin-top: 0;
+                margin-left: 1rem;
+                align-items: end;
+                height: 100%;
+                .logo{
+
+                    svg{
+                        height: 100%;
+                        width: auto;
+                    }
+                }
+        }
+    }
+    }
+}
+
 
 
 

@@ -39,6 +39,23 @@ export default defineType({
         { name: 'part2', title: 'Part 2', type: 'text', validation: Rule => Rule.max(250) },
       ],
     }),
+
+    // New field for 5 images
+    defineField({
+      name: 'gallery',
+      title: 'Gallery (5 Images)',
+      type: 'array',
+      of: [
+        defineField({
+          name: 'image',
+          title: 'Image',
+          type: 'image',
+          options: { hotspot: true },
+        }),
+      ],
+      validation: (Rule) => Rule.max(5).required().error('Gallery must have exactly 5 images.'),
+    }),
+
     defineField({
       name: 'section02',
       title: 'Section 02 (Studio)',

@@ -1,164 +1,82 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-	import { onMount } from 'svelte';
-	import { gsap } from 'gsap';
-	// import { ScrollTrigger, Draggable } from 'gsap/all';
-	export let data: PageData; // Cards data from +page.server.ts
-	
-	
-	onMount(() => {
-	// gsap.registerPlugin(ScrollTrigger, Draggable);
+	import type { HomeContent } from '$lib/types/types';
 
-	gsap.utils.toArray('.cardTitle').forEach((line, i) => {
-	const links = line.querySelectorAll("a"),
-			tl = horizontalLoop(links, {
-			repeat: -1, 
-			speed: 1 + i * .2,
-			reversed: i ? true : false,
-			paddingRight: parseFloat(gsap.getProperty(links[0], "marginRight", "px")) // otherwise first element would be right up against the last when it loops. In this layout, the spacing is done with marginRight.
-			});
-	links.forEach(link => {
-		link.addEventListener("mouseenter", () => gsap.to(tl, {timeScale: 0, overwrite: true}));
-		link.addEventListener("mouseleave", () => gsap.to(tl, {timeScale: i ? -1 : 1, overwrite: true}));
-	});
+	export let data: { 
+	homeContent: HomeContent;
+    products: Array<{
+      name: string;
+      slug: string;
+      images: string[];
+      salePrice: number;
+    }>;
+  };
+  </script>
+  <!--  -->
+  <div class="homePage">
+	<!-- Header Section -->
+	<div class="header">
+	  <h1 class="header-title">{data.homeContent.header}</h1>
+	<hr>
 
-	// console.log("List of items within cardTitle: ", links)
-	});
-
-	// This helper function makes a group of elements animate along the x-axis in a seamless, responsive loop.
-	function horizontalLoop(items:any, config:any) {
-  items = gsap.utils.toArray(items);
-  config = config || {};
-  let tl = gsap.timeline({repeat: config.repeat, paused: config.paused, defaults: {ease: "none"}, onReverseComplete: () => tl.totalTime(tl.rawTime() + tl.duration() * 100)}),
-    length = items.length,
-    startX = items[0].offsetLeft,
-    times = [],
-    widths = [],
-    xPercents = [],
-    curIndex = 0,
-    pixelsPerSecond = (config.speed || 1) * 100,
-    snap = config.snap === false ? v => v : gsap.utils.snap(config.snap || 1), 
-	totalWidth, curX, distanceToStart, distanceToLoop, item, i;
-
-	gsap.set(items, { // convert "x" to "xPercent" to make things responsive, and populate the widths/xPercents Arrays to make lookups faster.
-    xPercent: (i, el) => {
-      let w = widths[i] = parseFloat(gsap.getProperty(el, "width", "px"));
-      xPercents[i] = snap(parseFloat(gsap.getProperty(el, "x", "px")) / w * 100 + gsap.getProperty(el, "xPercent"));
-      return xPercents[i];
-    }
-  });
-  gsap.set(items, {x: 0});
-  totalWidth = items[length-1].offsetLeft + xPercents[length-1] / 100 * widths[length-1] - startX + items[length-1].offsetWidth * gsap.getProperty(items[length-1], "scaleX") + (parseFloat(config.paddingRight) || 0);
-  for (i = 0; i < length; i++) {
-    item = items[i];
-    curX = xPercents[i] / 100 * widths[i];
-    distanceToStart = item.offsetLeft + curX - startX;
-    distanceToLoop = distanceToStart + widths[i] * gsap.getProperty(item, "scaleX");
-    tl.to(item, {xPercent: snap((curX - distanceToLoop) / widths[i] * 100), duration: distanceToLoop / pixelsPerSecond}, 0)
-      .fromTo(item, {xPercent: snap((curX - distanceToLoop + totalWidth) / widths[i] * 100)}, {xPercent: xPercents[i], duration: (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond, immediateRender: false}, distanceToLoop / pixelsPerSecond)
-      .add("label" + i, distanceToStart / pixelsPerSecond);
-    times[i] = distanceToStart / pixelsPerSecond;
-  }
-  function toIndex(index, vars) {
-    vars = vars || {};
-    (Math.abs(index - curIndex) > length / 2) && (index += index > curIndex ? -length : length); // always go in the shortest direction
-    let newIndex = gsap.utils.wrap(0, length, index),
-      time = times[newIndex];
-    if (time > tl.time() !== index > curIndex) { // if we're wrapping the timeline's playhead, make the proper adjustments
-      vars.modifiers = {time: gsap.utils.wrap(0, tl.duration())};
-      time += tl.duration() * (index > curIndex ? 1 : -1);
-    }
-    curIndex = newIndex;
-    vars.overwrite = true;
-    return tl.tweenTo(time, vars);
-  }
-  tl.next = vars => toIndex(curIndex+1, vars);
-  tl.previous = vars => toIndex(curIndex-1, vars);
-  tl.current = () => curIndex;
-  tl.toIndex = (index, vars) => toIndex(index, vars);
-  tl.times = times;
-  if (config.reversed) {
-    tl.vars.onReverseComplete();
-    tl.reverse();
-  }
-  return tl;
-}
-});
-</script>
-
-<div class="viewParent mx-auto grid grid-row lg:grid-col md:grid-col">
-	
-		<!-- Big Box -->
-		<div class="bigBox">
-			<img 
-				src={"https://studioblackburn.com/media/pages/archive/coif-1/edbe76129a-1632249252/1804-studioblackburn-138-557572edd5666-3000x-q85.jpg"} 
-				alt={"Big img"} 
-				class="object-cover" 
-			/>
-			<div class="cardTitle container-full">
-				<a href="#" class="stb-item">
-				<p> Project {data.cards[0]?.projectTitle}</p>
-				</a>
-
-				<a href="#" class="stb-item">
-					<p> Client {data.cards[0]?.client}</p>
-				</a>
-
-				<a href="#" class="stb-item">
-					<p> Sector {data.cards[0]?.sector}</p>
-				</a>
-
-				<a href="#" class="stb-item">
-					<p> Date {data.cards[0]?.completionDate}</p>
-				</a>
-			</div>
-		</div>
-		
-	
-	<!-- Small Box -->
-	<div class="smallBox">
-		<img 
-			src={data.cards[0]?.heroImage.asset.url} 
-			alt={data.cards[0]?.projectTitle} 
-			class="object-cover" 
-		/>
-			<div class="cardTitle container-full">
-				<a href="#" class="stb-item">
-				<p> Project {data.cards[1]?.projectTitle}</p>
-				</a>
-
-				<a href="#" class="stb-item">
-					<p> Client {data.cards[1]?.client}</p>
-				</a>
-
-				<a href="#" class="stb-item">
-					<p> Sector {data.cards[1]?.sector}</p>
-				</a>
-
-				<a href="#" class="stb-item">
-					<p> Date {data.cards[1]?.completionDate}</p>
-				</a>
-			</div>
 	</div>
+  
+	<!-- Main Body Section -->
 
+	<main class="Maincontent">
 
+		<section class="showcaseContainer">
 
-	<!-- Content Section -->
-	<div class="viewContent mx-auto grid grid-col lg:grid-row md:grid-row gap-1">
-		<div class="viewContent_container">
-			<div class="welcomeContainer viewContent_child">
-				<h5>(HEY, NICE TO MEET YOU)</h5>
-				<p>
-					Together we can provide a tailored care that enhances the quality of life for your elderly residents.
-				</p>
-			</div>
-
-			<div class="viewContent_child">
-				<h5>(HEY, NICE TO MEET YOU)</h5>
-				<p>
-					Together we can provide a tailored care that enhances the quality of life for your elderly residents.
-				</p>
-			</div>
+		<div class="subHead"> 
+		<h2 class="subheadings">Our favourite collection</h2>
 		</div>
-	</div>
-</div>
+    <!-- Showcase Section -->
+		<div class="showcase-grid">
+		  {#each data.products as product (product.slug)}
+			<a href={`/products/${product.slug}`} class="showcase-item">
+			  <img
+				src={product.images[0]}
+				alt={product.name}
+				class="showcase-image"
+			  />
+			  <div class="showcase-info">
+				<h3 class="showcase-name p-sm-accent">{product.name}</h3>
+			  </div>
+			</a>
+		  {/each}
+	  </div>
+	  
+	</section>
+	<section class="contentContainer">
+
+		<div class="logo"> 
+		<svg width="117" height="57" viewBox="0 0 117 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<g clip-path="url(#clip0_762_721)">
+			<path fill-rule="evenodd" clip-rule="evenodd" d="M78.0394 39.1031C79.386 38.8105 80.9481 37.8531 82.4888 36.7216C84.1022 35.5363 85.9497 33.9616 87.9153 32.1564C88.806 31.3388 89.7265 30.4682 90.6674 29.5578C91.0954 29.6842 91.5061 29.8062 91.8978 29.9233C93.4396 30.3842 94.6881 30.768 95.5501 31.0363C95.9811 31.1705 96.3155 31.2757 96.5416 31.3472C96.6544 31.383 96.7405 31.4103 96.7979 31.4286L96.8779 31.4542L96.8816 31.4554L96.8824 31.4557C96.8824 31.4557 96.8828 31.4557 97.0145 31.0395L97.4561 29.6456C98.0298 27.8355 98.029 27.8353 98.029 27.8353L98.0279 27.8349L98.0056 27.8277L97.9373 27.806C97.8773 27.7869 97.789 27.7587 97.6731 27.7221C97.4417 27.6489 97.1017 27.5418 96.665 27.4058C95.9411 27.1805 94.9508 26.8756 93.7472 26.5131C96.0347 24.2073 98.377 21.7569 100.647 19.3285C104.921 14.7551 108.963 10.2349 111.934 6.85987C113.419 5.17184 114.639 3.76901 115.487 2.78763C115.912 2.29692 116.243 1.91151 116.469 1.64842C116.581 1.51688 116.668 1.41592 116.726 1.34765L116.809 1.25015L116.814 1.24501L116.815 1.24364C116.815 1.24364 116.815 1.2431 115.384 0.00566675L115.388 0L115.472 0.0723619L115.384 0.00566675L115.303 0.0997606C115.131 0.288525 115.12 0.176739 114.565 0.288525C113.621 0.478526 112.512 0.424095 112.3 0.668526C111.458 1.64255 110.586 2.66111 109.109 4.33945C106.153 7.6972 102.139 12.1874 97.8984 16.7242C95.1467 19.6679 92.3096 22.6208 89.6107 25.2923C87.0382 24.5483 84.0339 23.7079 80.8304 22.8671C71.4485 20.405 60.087 17.8657 52.9206 17.8657C52.1699 17.8657 51.383 18.082 50.661 18.3521C49.9099 18.6333 49.0856 19.0286 48.2191 19.5029C46.4848 20.4521 44.4596 21.7842 42.317 23.3532C40.833 24.4402 39.2765 25.6523 37.7029 26.948C36.5454 26.622 35.4557 26.312 34.4512 26.0243C32.3731 25.4289 30.6608 24.9288 29.4686 24.5776C28.8725 24.402 28.4065 24.2637 28.0899 24.1694C27.9316 24.1222 27.8107 24.0861 27.7295 24.0618L27.6093 24.0258L27.608 24.0253C27.608 24.0253 27.6076 24.0252 27.0675 25.8457L27.608 24.0253L27.0178 23.8478L1.71651 32.87C1.71651 32.87 0.772943 34.2985 0.0180989 35.6285C-0.114317 35.8618 0.523284 37.3267 0.523284 37.3267L27.119 27.843C27.4339 27.9367 27.8685 28.0655 28.4088 28.2247C29.6087 28.5781 31.33 29.0809 33.4183 29.6792C33.6855 29.7557 33.9587 29.8338 34.2376 29.9134C32.4204 31.5287 30.633 33.215 28.9596 34.908C24.835 39.0811 21.2069 43.4883 19.6704 47.0664C18.9243 48.8038 18.4505 50.8512 19.3036 52.6311C20.2228 54.5486 22.24 55.32 24.4798 55.4811C32.4807 56.0565 53.2184 56.3411 71.8716 56.4832C81.2169 56.5546 90.0658 56.5904 96.5782 56.6078C99.8346 56.617 102.507 56.6215 104.365 56.6234C105.295 56.6246 106.02 56.6253 106.514 56.6257H107.268C107.268 56.6257 116.453 56.6257 116.453 54.7257C116.453 52.8257 116.452 52.8257 116.452 52.8257H106.516C106.023 52.8253 105.298 52.8246 104.37 52.8234C102.513 52.8215 99.8425 52.817 96.5884 52.8078C90.0802 52.7904 81.2376 52.7546 71.9003 52.6832C53.1893 52.5407 32.5994 52.2553 24.7487 51.6906C23.0256 51.5668 22.7447 51.0671 22.7026 50.9793C22.5945 50.7539 22.4963 50.0612 23.1347 48.5746C24.3671 45.7045 27.5433 41.7278 31.6348 37.5885C33.8195 35.3781 36.2092 33.1766 38.596 31.1427C41.806 32.0376 45.4179 33.0209 49.1226 33.9846C54.9987 35.5132 61.1332 36.9992 66.2752 38.0038C68.8439 38.5058 71.1945 38.8934 73.1556 39.1039C75.0494 39.3072 76.7965 39.3729 78.0394 39.1031ZM42.1981 28.1987C44.6902 28.8832 47.354 29.5998 50.0669 30.3055C55.9147 31.8267 61.9636 33.2905 66.9942 34.2735C69.5116 34.7653 71.7448 35.131 73.5556 35.3254C75.4337 35.527 76.6467 35.518 77.2438 35.3884C77.7374 35.2812 78.7346 34.7753 80.2643 33.6517C81.7207 32.5818 83.4546 31.1098 85.3719 29.3489C85.7285 29.0215 86.0905 28.685 86.457 28.3403C84.4306 27.7667 82.2072 27.1554 79.8785 26.5442C70.4363 24.0664 59.53 21.6657 52.9206 21.6657C52.8296 21.6657 52.5349 21.7048 51.9763 21.914C51.4468 22.1121 50.792 22.4199 50.0216 22.8415C48.4822 23.684 46.6026 24.9138 44.537 26.4263C43.7754 26.984 42.993 27.5769 42.1981 28.1987Z" fill="#1E1E1E"/>
+			<path d="M51.9287 27.36V24.0996H54.3382V24.7791H52.7304V25.4402H54.0755V26.0923H52.7304V27.36H51.9287Z" fill="#1E1E1E"/>
+			<path d="M74.1963 32.6801V29.4197H76.651V30.0854H74.9979V30.6691H76.4155V31.2984H74.9979V31.9961H76.6782V32.6801H74.1963Z" fill="#1E1E1E"/>
+			</g>
+			<defs>
+			<clipPath id="clip0_762_721">
+			<rect width="117" height="57" fill="white"/>
+			</clipPath>
+			</defs>
+			</svg>
+		</div>
+
+		<div class="contentParent"> 
+			<div> 
+			<h2 class="subheadings">{data.homeContent.body.subHeading}</h2>
+			<p class="pxl">{data.homeContent.body.body1}</p>
+			</div>
+			<p class="pxl">{data.homeContent.body.body2}</p>
+			<a href='/studio'><h3 class="subheadings">Learn More About Us</h3></a>
+	
+		</div>
+
+	</section>
+
+	</main>
+  </div>
+  
+
+  
